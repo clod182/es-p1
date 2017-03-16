@@ -1,4 +1,4 @@
-/*Manesso Claudio 859326*/
+/*Manesso Claudio 859326 ****/
 #include <stdlib.h>
 #include <stdio.h>
 #include "es14.h"
@@ -6,7 +6,7 @@
 void riempi_scacchiera(char *fen, char campo[DIM][DIM]) {/*------------------------------------------------------------------------------------------------es1-*/
 	int i=0,j=0,c=0;	
 	for(i=0;i<DIM;i++){/*inizializzo a 0 la matrice*/
-		for(j=0;j<DIM;j++){
+		for(j=0;j<DIM;j++){S
 			campo[i][j]=' ';
 		}
 	}	
