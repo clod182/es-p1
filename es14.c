@@ -3,26 +3,31 @@
 #include <stdio.h>
 #include "es14.h"
 
-void riempi_scacchiera(char *fen, char campo[DIM][DIM]) {
+void riempi_scacchiera(char *fen, char campo[DIM][DIM]) {/*------------------------------------------------------------------------------------------------es1-*/
 	int i=0,j=0;
-	for(i=0;i<DIM;i++){
+	for(i=0;i<DIM;i++){/*inizializzo a 0 la matrice*/
 		for(j=0;j<DIM;j++){
 			campo[i][j]='0';
 		}
 	}
+	i=0;
+	while(&fen[i]){
+		printf("%c ",&fen[i]);
+		i++;
+	}	
 }
 
-void vettore_casuale(int v[], int n, int min, int max) {
+void vettore_casuale(int v[], int n, int min, int max) {/*------------------------------------------------------------------------------------------------es2-*/
 	
 }
 
-int conta_sequenze(int n) {
+int conta_sequenze(int n) {/*------------------------------------------------------------------------------------------------es3-*/
 
 }
 
 /***********************MAIN*****************************/
 void stampa_matrice(char mat[DIM][DIM]){
-	int i=0,j=0;
+	int i=0,j=0;	
 	for(i=0;i<DIM;i++){
 		for(j=0;j<DIM;j++){
 			printf("%c ",mat[i][j]);
@@ -31,12 +36,16 @@ void stampa_matrice(char mat[DIM][DIM]){
 	}
 	printf("\n");
 }
+
+
 int main() {
-	char *fen;
+	char parola[]="casa";
+	char *fen = &parola;
 	char campo[DIM][DIM];
 	stampa_matrice(campo);
-	riempi_scacchiera(fen,campo);
+	riempi_scacchiera(*fen,campo);
 	stampa_matrice(campo);
 
 	return EXIT_SUCCESS;
 }
+
