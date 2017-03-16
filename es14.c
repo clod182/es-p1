@@ -1,4 +1,4 @@
-/*Manesso Claudio 859326 ****/
+/*Manesso Claudio 859326 */
 #include <stdlib.h>
 #include <stdio.h>
 #include "es14.h"
@@ -10,10 +10,10 @@ void riempi_scacchiera(char *fen, char campo[DIM][DIM]) {/*---------------------
 			campo[i][j]=' ';
 		}
 	}	
-	for(i=0;i<DIM;i++){
-		for(j=0;j<DIM ;j++){		//&& fen[c]!='/'	
+	for(i=DIM;i>0;i--){
+		for(j=0;j<DIM ;j++){		
 				if((fen[c]>='a' && fen[c]<='z') || (fen[c]>='A' && fen[c]<='Z')){
-					campo[i][j]=fen[c];
+					campo[i-1][j]=fen[c];
 				}
 				else if(fen[c]>='0' && fen[c]<='9'){
 					j=j+(fen[c]-'0')-1;
@@ -21,8 +21,7 @@ void riempi_scacchiera(char *fen, char campo[DIM][DIM]) {/*---------------------
 			c++;
 		}
 		c++;		
-	}
-		
+	}		
 }
 
 void vettore_casuale(int v[], int n, int min, int max) {/*------------------------------------------------------------------------------------------------es2-*/
