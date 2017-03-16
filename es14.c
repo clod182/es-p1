@@ -44,7 +44,7 @@ void stampa_matrice(char mat[DIM][DIM]){
 		}
 		printf("\n");
 	}
-	printf("\n");
+	printf("*****diocan\n");
 }
 
 
