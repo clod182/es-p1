@@ -6,24 +6,22 @@
 void riempi_scacchiera(char *fen, char campo[DIM][DIM]) {/*------------------------------------------------------------------------------------------------es1-*/
 	int i=0,j=0,c=0;	
 	for(i=0;i<DIM;i++){/*inizializzo a 0 la matrice*/
-		for(j=0;j<DIM;j++){S
+		for(j=0;j<DIM;j++){
 			campo[i][j]=' ';
 		}
 	}	
 	for(i=0;i<DIM;i++){
 		for(j=0;j<DIM ;j++){		//&& fen[c]!='/'	
-				if((fen[c]>=65 && fen[c]<=90) || (fen[c]>=97 && fen[c]<=122)){
+				if((fen[c]>='a' && fen[c]<='z') || (fen[c]>='A' && fen[c]<='Z')){
 					campo[i][j]=fen[c];
 				}
-				else{
-					j=j+(50-fen[c]);
+				else if(fen[c]>='0' && fen[c]<='9'){
+					j=j+(fen[c]-'0')-1;
 				}					
 			c++;
 		}
+		c++;		
 	}
-
-	
-		
 		
 }
 
