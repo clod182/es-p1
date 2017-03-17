@@ -13,8 +13,8 @@ void ricerca_bin(int v[], int min, int max, int inf, int sup){
 		x=RandRange(min,max);
 		m=(inf+sup)/2;
 		v[m]=x;
-		ricerca_bin(v,min,max,inf,m-1);
-		ricerca_bin(v,min,max,m+1,sup);
+		ricerca_bin(v,min,x,inf,m-1);
+		ricerca_bin(v,x,max,m+1,sup);
 	}
 }
 
@@ -79,10 +79,10 @@ int main() {
 	riempi_scacchiera(&parola,campo);
 	stampa_matrice(campo);
 	printf("------------------------------------------------es2\n");
-	int v[10]={-1,-1,-1,-1,-1};
+	int v[10];
 	int z=0;
 	for(z=0;z<10;z++){
-		vettore_casuale(v,10,2,3);
+		vettore_casuale(v,10,1,12);
 		stampa_vettore(v,10);
 	}
 	
