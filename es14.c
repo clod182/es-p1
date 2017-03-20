@@ -18,6 +18,24 @@ void ricerca_bin(int v[], int min, int max, int inf, int sup){
 	}
 }
 
+int seq_bigl(int n, char last, char prev){
+	if(n<=0){
+		return 1;
+	}
+	else if (last=='B' && prev=='B'){
+		return seq_bigl(n-1, 'G', last) + seq_bigl(n-1, 'R', last);
+	}
+	else if(last=='G'){
+		return seq_bigl(n-1, 'B', last) + seq_bigl(n-1, 'G', last);	
+	}
+	else if(last=='R'){
+		return seq_bigl(n-1, 'B', last) + seq_bigl(n-1, 'R', last);
+	}
+	else{
+		return seq_bigl(n-1, 'B', last) + seq_bigl(n-1, 'R', last) + seq_bigl(n-1, 'G', last);
+	}
+}
+
 void riempi_scacchiera(char *fen, char campo[DIM][DIM]) {/*------------------------------------------------------------------------------------------------es1-*/
 	int i=0,j=0,c=0;	
 	for(i=0;i<DIM;i++){/*inizializzo a 0 la matrice*/
@@ -44,7 +62,7 @@ void vettore_casuale(int v[], int n, int min, int max) {/*----------------------
 }
 
 int conta_sequenze(int n) {/*------------------------------------------------------------------------------------------------es3-*/
-
+	seq_bigl(n,'x','y');
 }
 
 /***********************MAIN*****************************/
@@ -84,6 +102,13 @@ int main() {
 	for(z=0;z<10;z++){
 		vettore_casuale(v,10,1,12);
 		stampa_vettore(v,10);
+	}
+	printf("------------------------------------------------es3\n");
+	int seq=0;
+	int i=0;
+	for(i=0;i<7;i++){
+		seq=conta_sequenze(i);
+		printf("sequenze di : %d == %d\n",i,seq);
 	}
 	
 	return EXIT_SUCCESS;
