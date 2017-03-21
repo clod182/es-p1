@@ -13,8 +13,18 @@
 }*/
 
 /*****************************************Funzioni ausiliarie**************************/
+int lung_str(char *s,int i){
+	if(s[i]=='\0'){
+		return 0;
+	}
+	else{
+		return 1+lung_str(s,i+1);
+	}
+}
 void aus_somma(char *s1, char *s2, char *ris,int riporto,int i,int j){
-int a;
+	int a;
+	int k1 = lung_str(s1,0)-1;
+	int k2 = lung_str(s2,0)-1;
 	if(s1[i]=='\0' && s2[j]=='\0'){
 		if (j>i){
 			ris[j]='\0';
@@ -24,7 +34,7 @@ int a;
 		}
 	}
 	else if(s1[i]=='\0' && s2[j]!='\0'){
-		a=s2[j]+riporto;
+		a=s2[k2-j]+riporto-'0';
 		if(a>'9'){
 			a=('0'+(a%'9'))-1;
 			riporto=1;
@@ -33,7 +43,7 @@ int a;
 		aus_somma(s1,s2,ris,riporto,i,j+1);
 	}
 	else if(s1[i]!='\0' && s2[i]=='\0'){
-		a=s1[i]+riporto;
+		a=s1[k1-i]+riporto-'0';
 		if(a>'9'){
 			a=('0'+(a%'9'))-1;
 			riporto=1;
@@ -42,7 +52,7 @@ int a;
 		aus_somma(s1,s2,ris,riporto,i+1,j);
 	}
 	else{
-		a=s1[i]+s2[j]+riporto-'0';
+		a=s1[k1-i]+s2[k2-j]+riporto-'0';
 		if(a>'9'){
 			a=('0'+(a%'9'))-1;
 			riporto=1;
