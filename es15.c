@@ -37,6 +37,7 @@ char a;
 	}
 	else{
 		a=s1[i]+s2[j]+riporto+'0';
+		//printf("aaa=%d",a);
 		riporto=48+a%57;
 		ris[j]=a;
 		aus_somma(s1,s2,ris,riporto,i+1,j+1);
