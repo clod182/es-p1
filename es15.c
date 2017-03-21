@@ -14,7 +14,7 @@
 
 /*****************************************Funzioni ausiliarie**************************/
 void aus_somma(char *s1, char *s2, char *ris,int riporto,int i,int j){
-char a;
+int a;
 	if(s1[i]=='\0' && s2[j]=='\0'){
 		if (j>i){
 			ris[j]='\0';
@@ -24,21 +24,29 @@ char a;
 		}
 	}
 	else if(s1[i]=='\0' && s2[j]!='\0'){
-		a='0'+s2[j]+riporto+'0';
-		riporto=48+a%57;
+		a=s2[j]+riporto-'0';
+		if(a>'9'){
+			a=('0'+(a%'9'))-1;
+			riporto=1;
+		}	
 		ris[j]=a;
 		aus_somma(s1,s2,ris,riporto,i,j+1);
 	}
 	else if(s1[i]!='\0' && s2[i]=='\0'){
-		a='0'+s1[i]+riporto+'0';
-		riporto=48+a%57;
+		a=s1[i]+riporto-'0';
+		if(a>'9'){
+			a=('0'+(a%'9'))-1;
+			riporto=1;
+		}	
 		ris[i]=a;
 		aus_somma(s1,s2,ris,riporto,i+1,j);
 	}
 	else{
-		a=s1[i]+s2[j]+riporto+'0';
-		//printf("aaa=%d",a);
-		riporto=48+a%57;
+		a=s1[i]+s2[j]+riporto-'0';
+		if(a>'9'){
+			a=('0'+(a%'9'))-1;
+			riporto=1;
+		}				
 		ris[j]=a;
 		aus_somma(s1,s2,ris,riporto,i+1,j+1);
 	}
