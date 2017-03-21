@@ -7,8 +7,11 @@
  * Aggiungere l'opzione `-ggdb` se volete utilizzare il debugger.
  */
 int main() {
-
-	/* Scrivete il vostro main qui. */
+	int i=0;
+	int num1=543210;
+	char string1[10];
+	converti(num1,&string1);
+	printf("%s\n", string1);
 
 	return EXIT_SUCCESS;
 }
