@@ -95,5 +95,25 @@ void somma(char *s1, char *s2, char *ris) {
 }
 /*------------------------------------------------------------------------------------------------es3-*/
 int confronta(char *s1, char *s2) {
-	return 0;
+	int i=0,j=0;
+	if(s1[i]=='\0' && s2[j]=='\0'){
+		if(s1[i]==s2[j]){
+			return 0;
+		}
+		else if(s1[i]<s2[j]){
+			return -1;
+		}
+		else if(s1[i]>s2[j]){
+			return 1;
+		}
+	}
+	else if(s1[i]!='\0' && s2[j]=='\0'){
+		return -1;
+	}
+	else if(s1[i]=='\0' && s2[j]!='\0'){
+		return 1;
+	}
+	else{
+		return confronta(&s1[i+1],&s2[j+1]);
+	}
 }

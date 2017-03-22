@@ -19,5 +19,10 @@ int main() {
 	somma(string2,string3,string4);
 	printf("%s +\n%s =\n%s\n", string2,string3,string4);
 	printf("-------------es3--*-*-*-*-*-*-\n");
+	int con=-99;
+	char string12[11]="321";
+	char string13[11]="156";
+	con=confronta(string12,string13);
+	printf("confronto fra \n%s e\n%s == \n%d",string12,string13,con);
 	return EXIT_SUCCESS;
 }
