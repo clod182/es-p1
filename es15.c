@@ -15,38 +15,59 @@
 /*****************************************Funzioni ausiliarie**************************/
 void aus_somma(char *s1, char *s2, char *ris,int riporto,int i,int j){
 int a;
-	if(s1[i]=='\0' && s2[j]=='\0'){
-		if (j>i){
-			ris[j]='\0';
+	if(s1[i]=='\0' && s2[j]=='\0'){/*caso base */
+		if (riporto!=0){
+			if (j>i){
+				ris[j]=riporto+'0';
+				ris[j+1]='\0';
+			}
+			else{
+				ris[i]=riporto+'0';
+				ris[i+1]='\0';
+			}
 		}
 		else{
-			ris[i]='\0';
+			if (j>i){
+				ris[j]='\0';
+			}
+			else{
+				ris[i]='\0';
+			}
 		}
 	}
-	else if(s1[i]=='\0' && s2[j]!='\0'){
+	else if(s1[i]=='\0' && s2[j]!='\0'){/*caso part 1*/
 		a=s2[j]+riporto;
 		if(a>'9'){
 			a=('0'+(a%'9'))-1;
 			riporto=1;
-		}	
+		}
+		else{
+			riporto=0;
+		}
 		ris[j]=a;
 		aus_somma(s1,s2,ris,riporto,i,j+1);
 	}
-	else if(s1[i]!='\0' && s2[i]=='\0'){
+	else if(s1[i]!='\0' && s2[i]=='\0'){/*caso part 2*/
 		a=s1[i]+riporto;
 		if(a>'9'){
 			a=('0'+(a%'9'))-1;
 			riporto=1;
-		}	
+		}
+		else{
+			riporto=0;
+		}
 		ris[i]=a;
 		aus_somma(s1,s2,ris,riporto,i+1,j);
 	}
-	else{
+	else{                           /*altri casi*/
 		a=s1[i]+s2[j]+riporto-'0';
 		if(a>'9'){
 			a=('0'+(a%'9'))-1;
 			riporto=1;
-		}				
+		}
+		else{
+			riporto=0;
+		}
 		ris[j]=a;
 		aus_somma(s1,s2,ris,riporto,i+1,j+1);
 	}
