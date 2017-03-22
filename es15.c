@@ -1,16 +1,7 @@
+/*Manesso Claudio 859326*/
 #include <stdlib.h>
 #include <stdio.h>
 #include "es15.h"
-
-/*void prova(char *ris, int *num) {
-	int i=0;
-	while(ris[i]){
-		printf("%c\n",ris[i] );
-		//sarebbe la stessa cosa di fare printf("%c\n",*(ris+i) );
-		printf("%d\n",*num);
-		i++;
-	}
-}*/
 
 /*****************************************Funzioni ausiliarie**************************/
 void aus_somma(char *s1, char *s2, char *ris,int riporto,int i,int j){
@@ -95,25 +86,25 @@ void somma(char *s1, char *s2, char *ris) {
 }
 /*------------------------------------------------------------------------------------------------es3-*/
 int confronta(char *s1, char *s2) {
-	int i=0,j=0;
-	if(s1[i]=='\0' && s2[j]=='\0'){
-		if(s1[i]==s2[j]){
+	if(*(s1+1)=='\0' && *(s2+1)=='\0'){
+		if(*s1==*s2){
 			return 0;
 		}
-		else if(s1[i]<s2[j]){
+		else if(*s1<*s2){
 			return -1;
 		}
-		else if(s1[i]>s2[j]){
+		else if(*s1>*s2){
 			return 1;
 		}
 	}
-	else if(s1[i]!='\0' && s2[j]=='\0'){
+	else if(*s1!='\0' && *s2=='\0'){
 		return -1;
 	}
-	else if(s1[i]=='\0' && s2[j]!='\0'){
+	else if(*s1=='\0' && *s2!='\0'){
 		return 1;
 	}
 	else{
-		return confronta(&s1[i+1],&s2[j+1]);
+		return confronta((s1+1),(s2+1));
 	}
+	return -99;
 }
