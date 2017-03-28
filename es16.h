@@ -2,8 +2,8 @@
 #define ES_16_H
 
 struct oggetto {
-    int valore;
     int peso;
+    int valore;
 };
 
 struct moneta {
