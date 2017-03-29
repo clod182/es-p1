@@ -13,10 +13,13 @@ int main() {
 	struct oggetto v1[3]={{3, 5}, {8, 11}, {2, 3}};
 	struct oggetto v2[4]={{3, 5}, {8, 11}, {2, 3}, {5, 7}};
 	struct oggetto v3[4]={{3, 5}, {8, 11}, {2, 3}, {6, 7}};
-	x=zaino(v1, 3, 9);
+	struct oggetto v4[5]={{3, 5}, {2, 80}, {2, 3}, {6, 20}, {6, 7}};
+	x=zaino(v1, 3, 8);
 	printf("-*-*-*-*-*-*-*-*-   es1    *-*-*-*-*-*-*-**\n");
 	printf("v1 == %d \n", x);
 	printf("v2 == %d \n", zaino(v2, 4, 10));
 	printf("v3 == %d \n", zaino(v3, 4, 10));
+	printf("v4 == %d \n", zaino(v4, 5, 10));
+	printf("-*-*-*-*-*-*-*-*-   es2    *-*-*-*-*-*-*-**\n");
 	return EXIT_SUCCESS;
 }
