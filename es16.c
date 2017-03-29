@@ -13,9 +13,30 @@ int aus_zain(struct oggetto v[], int n, int p, int idx){
 			return aus_zain(v,n,p,idx+1);
 		}
 }
+int best_zain(struct oggetto v[], int n, int p, int idx,int best,int bestb){
+
+	if(idx==n){
+		return best;
+	}
+	else if(idx==0){
+		best=aus_zain(v,n,p,idx);
+		return best_zain(v,n,p,idx+1,best,bestb);
+	}
+	else {
+		bestb=best;
+		best=aus_zain(v,n,p,idx);
+		if(best>bestb){
+			return best_zain(v,n,p,idx+1,best,bestb);
+		}
+		else{
+			best=bestb;
+			return best_zain(v,n,p,idx+1,best,bestb);
+		}
+	}
+}
 /*------------------------------------------------------------------------------------------------es1-*/
 int zaino(struct oggetto v[], int n, int p) {
-	return aus_zain(v, n, p, 0);
+	return best_zain(v, n, p, 0,-1,-1);
 }
 /*------------------------------------------------------------------------------------------------es2-*/
 int combinazioni_monete(struct moneta m[], int n, int somma) {
