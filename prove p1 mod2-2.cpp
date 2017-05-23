@@ -71,12 +71,41 @@ void stampa(Listint testa){ /*stampa di una lista*/
 	}
 }
 
+/*-----------------------------------------------eserciziario------------------------------------*/
+
+
+//es 5.1
+Listint createlist (unsigned int number ) {
+	if ( number == 0 )
+		return NULL;
+	else {
+		Listint newcell = ( Listint ) malloc ( sizeof ( struct listint) ) ;
+		newcell->info = number%10;
+		newcell->next = createlist ( number/10 );
+		return newcell ;
+	}
+}
+
+//es 5.3
+void remove(Listint *l){
+	if(*l){
+		remove(&((*l)->next));
+		if((*l)->info==0){
+			*l=(*l)->next;
+		}
+	}
+}
+
+
+
+
+/*-------------------------------main--------------------------------------------------------------*/
 
 int main(){	
 	Listint head=NULL;
 	int inserimento=0;
 	while(1){
-		printf("1 - Inserisci in testa nella lista\n2 - Stampa\n3 - Esci\n4 - Inserisci in coda nella lista\n5 - Distruggi lista :\n");
+		printf("1 - Inserisci in testa nella lista\n2 - Stampa\n3 - Esci\n4 - Inserisci in coda nella lista\n5 - Distruggi lista :\n6 - eserciziario\n7 - Rimuovi gli 0\n");
 		scanf("%d", &inserimento);
 		switch(inserimento){
 			case 1:
@@ -93,6 +122,10 @@ int main(){
 				break;
 			case 5:
 				distruggiL(head);
+			case 6:
+				head=createlist(102030);
+			case 7:
+				remove(&head);
 			default:
 				printf("Carattere non valido\n");
 				break;
